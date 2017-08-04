@@ -14,5 +14,25 @@
 * app加载创建的第一个控件即是UIWindow,接着创建控制器的view添加到UIWindow
 * UI之所以能显示,是因为添加到了UIWindow
 * 一个窗口必须得有根控制器
+* 程序加载显示的UIWindow即是AppDelegate的那个UIWindow(window属性)
+> 若增多一个UIWindow类型的属性并建多一个UIWindow对象给它则还是不能显示,因为创建的window和默认的都是Normal级别(0),系统优先显示AppDelegate的window属性,要想显示则设置为Alert(2000)最高级别再设置系统的为Normal即可(只要高于就行,等于不行).
+
 ## 加载视图过程
 * 程序开始加载,如果有Main,则加载main.storyboard(没有则什么都不做self.window = null;),先创建UIWindow窗口,然后将main.storyboard指向的控制器ViewController设为该窗口的根控制器,然后显示UIWindow窗口,然后将根控制器的View添加到UIWindow窗口上并将该UIWindow设成应用程序的主窗口KeyWindow.
+
+## 窗口层级
+> self.window.windowLevel = UIWindowLevelNoraml;
+UIWindowLevelAlert > UIWindowLevelStatusBar > UIWindowLevelNormal
+
+## 通过StoryBoard加载控制器 - UIStoryboard
+* 可以将storyboard文件变为一个对象来使用
+* 设置storyboard的控制器为UIWindow的根控制器
+
+```objectivec
+    //创建storyBoard对象
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"One" bundle:nil];
+    //加载storyBoard箭头指向的控制器
+    UIViewController *vc =  [storyBoard instantiateInitialViewController];
+    //加载指定ID的控制器
+    //UIViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:@"VC"];
+```
