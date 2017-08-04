@@ -1,0 +1,116 @@
+{
+"title" : "siaoxiorliao的学习笔记",
+"author" : "siaoxiorliao",
+"description" : "学习笔记",
+"output.name": "site",
+"gitbook": "3.2.2",
+"language": "zh-hans",
+"links": {
+"sidebar": {
+"Home": "https://www.gitbook.com/@siaoxiorliao"
+}
+},
+
+"plugins": [
+
+"splitter",
+"advanced-emoji",
+
+"highlight",
+
+"-sharing",
+
+"anchors",
+
+"simple-page-toc",
+
+
+"anchor-navigation-ex",
+
+"sectionx",
+
+"toggle-chapters",
+
+"-highlight",
+"prism",
+"prism-themes",
+
+
+"tbfed-pagefooter",
+
+"github",
+
+"-search",
+"search-pro",
+
+"anchor-navigation-ex",
+
+"todo",
+
+
+
+"github-buttons",
+
+"fontsettings",
+"livereload"
+],
+"pluginsConfig": {
+
+"search-pro": {
+"cutWordLib": "nodejieba",
+"defineWord" : ["Gitbook Use"]
+},
+
+"simple-page-toc": {
+"maxDepth": 3,
+"skipFirstH1": true
+},
+    
+"sectionx": {
+          "tag": "b"
+},
+
+
+
+"tbfed-pagefooter": {
+"copyright":"Copyright &copy siaoxiorliao 2017",
+"modify_label": "修改时间 :",
+"modify_format": "YYYY-MM-DD HH:mm:ss"
+}, 
+
+"github": {
+"url": "https://github.com/siaoxiorliao"
+},
+
+"github-buttons": {
+            "repo": "siaoxiorliao/uifoundationnote",
+            "types": [
+                "star"
+            ],
+            "size": "small"
+},
+
+"search-pro": {
+"cutWordLib": "nodejieba",
+"defineWord" : ["Gitbook Use"]
+},
+
+
+"prism": { 
+"css": ["prism-themes/themes/prism-xonokai.css"]
+},
+
+"anchor-navigation-ex": {
+            "isRewritePageTitle": false,
+            "isShowTocTitleIcon": true,
+            "tocLevel1Icon": "fa fa-hand-o-right",
+            "tocLevel2Icon": "fa fa-hand-o-right",
+            "tocLevel3Icon": "fa fa-hand-o-right"
+},
+"fontsettings": {
+        "theme": "white",
+        "family": "serif",
+        "size":  2
+}
+}
+}
