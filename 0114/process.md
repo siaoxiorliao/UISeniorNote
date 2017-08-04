@@ -10,3 +10,9 @@
 5.应用程序启动完毕.(通知代理应用程序启动完毕)
 
 # UIWindow
+* UIWindow是一种特殊的UIView,继承自UIView,一个app至少有一个UIWindow
+* app加载创建的第一个控件即是UIWindow,接着创建控制器的view添加到UIWindow
+* UI之所以能显示,是因为添加到了UIWindow
+* 一个窗口必须得有根控制器
+## 加载视图过程
+* 程序开始加载,如果有Main,则加载main.storyboard(没有则什么都不做self.window = null;),先创建UIWindow窗口,然后将main.storyboard指向的控制器ViewController设为该窗口的根控制器,然后显示UIWindow窗口,然后将根控制器的View添加到UIWindow窗口上并将该UIWindow设成应用程序的主窗口KeyWindow.
