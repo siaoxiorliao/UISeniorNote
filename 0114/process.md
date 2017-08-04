@@ -29,10 +29,13 @@ UIWindowLevelAlert > UIWindowLevelStatusBar > UIWindowLevelNormal
 * 设置storyboard的控制器为UIWindow的根控制器
 
 ```objectivec
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     //创建storyBoard对象
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"One" bundle:nil];
     //加载storyBoard箭头指向的控制器
     UIViewController *vc =  [storyBoard instantiateInitialViewController];
     //加载指定ID的控制器
     //UIViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:@"VC"];
+    self.window.rootViewController = vc;
+    [self.window makeKeyAndVisible];
 ```
