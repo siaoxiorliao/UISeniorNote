@@ -17,6 +17,7 @@
 * app加载创建的第一个控件即是UIWindow,接着创建控制器的view添加到UIWindow
 * UI之所以能显示,是因为添加到了UIWindow
 * 一个窗口必须得有根控制器
+* 当指定了UIWindow的根控制器，该控制器的view会自动添加在UIWindow上
 * 程序加载显示的UIWindow即是AppDelegate的那个UIWindow(window属性)
 > 若增多一个UIWindow类型的属性并建多一个UIWindow对象给它则还是不能显示,因为创建的window和默认的都是Normal级别(0),系统优先显示AppDelegate的window属性,要想显示则设置为Alert(2000)最高级别再设置系统的为Normal即可(只要高于就行,等于不行).
 
