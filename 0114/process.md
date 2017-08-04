@@ -38,4 +38,57 @@ UIWindowLevelAlert > UIWindowLevelStatusBar > UIWindowLevelNormal
     //UIViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:@"VC"];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
+    
 ```
+## 通过Xib加载控制器的View
+> 之前学的是通过xib自定义View
+```objectivec
+UINib *nib = [UINib nibWithNibName:@"CarView" bundle:nil];
+UIView *carView = [[nib instantiateWithOwner:nil options:nil] firstObject];
+[self.view addSubview:carView];
+```
+
+* initWithNibName
+ >     //initWithNibName:如果指定了特定的名称的xib,会去加载指定的xib
+    //如果指定是nil
+    //1.判断有没有当前控制器相同名称的xib,如果有,自动加载跟它相同名称的xib(XMGViewController.xib)
+    //2.如果没有跟它相同名称的xib.自动加载跟它相同名称并且是去掉controller(XMGView.xib)
+    **init底层自动调用initWithNibName.**
+    //XMGViewController *vc = [[XMGViewController alloc] init];
+    //vc.view.backgroundColor = [UIColor redColor];
+    
+### 控制器loadView方法 - 自定义控制器view
+* 在控制器View第一次使用的时候调用
+* 底层: 
+   1. 判断view是否从storyboard中加载,如果是就设置sb中的view设为当前控制器的view
+   2. 判断是否从xib中加载,如果是就设置xib指定的view设为当前控制器的view
+   3. 如果都不是,则会创建空白的view(cleaColor,不是alpha=0)
+   
+* 重写loadView方法能让控制器一创建就创建自己想要的控件并做为View
+* 控制器的view是懒加载的.
+
+```objectivec
+-(void)loadView{
+//    XMGView *xmgV = [[XMGView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    self.view = xmgV;
+    //如果一个控件不能够接收事件,那么它里面子控件也是能不能够接收事件
+    //如果一个控件是alpha=0的(不是clearColor),则它不能接收事件
+    UIImageView *imageV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"火影"]];
+    imageV.userInteractionEnabled = YES;
+    self.view = imageV;
+}
+```
+
+### 控制器view懒加载过程
+```objectivec
+-(UIView *)view{
+    if (_view == nil) {
+        [self loadView];
+        [self viewDidLoad];
+
+    }
+    return _view
+}
+```
+
+   
