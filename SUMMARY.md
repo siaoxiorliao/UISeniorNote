@@ -12,5 +12,5 @@
 
 ## 其他
 
-* [语法外传-超级训练机器😎😎😎](grammar/grammar.md)
+* [外传-超级记忆训练机器😎😎😎](grammar/grammar.md)
 
