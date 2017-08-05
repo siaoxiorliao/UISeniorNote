@@ -4,16 +4,45 @@
 
 * 和tablView差不多的套路
 
-* 点击textFiled弹出pickView
-> 
-
-        self.inputView = pick//输入后的view
-        let button = UIButton(type: .custom)
-        button .addTarget(self, action: #selector(self.hideKeyBoard), for: .touchUpInside)
-        button.setTitle("完成", for: .normal)
-        bar.addSubview(button)
-        self.inputAccessoryView = bar//顶部指示
-
+* 点击textFiled弹出pickView并且有收回按钮
+```objectivec
+     - (void)awakeFromNib{
+    [super awakeFromNib];
+    [self setUp];
+    }
+    - (instancetype)initWithFrame:(CGRect)frame{
+    if(self = [super initWithFrame:frame]){
+        [self setUp];
+    }
+    return self;
+    }
+    -(void)setUp{
+    UIDatePicker *datePick = [[UIDatePicker alloc]init];
+    datePick.datePickerMode = UIDatePickerModeDate;
+    datePick.locale = [NSLocale localeWithLocaleIdentifier:@"zh"];
+    self.inputView = datePick;
+    
+    [datePick addTarget:self action:@selector(dateChange:) forControlEvents:UIControlEventValueChanged];
+    
+    UIToolbar *bar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44)];
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 50, 2, 50, 40);
+    [btn setTitle:@"完成" forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
+    [bar addSubview:btn];
+    self.inputAccessoryView = bar;
+    }
+    -(void)btnClick{
+    [self resignFirstResponder];
+    }
+    - (void)dateChange: (UIDatePicker *)datePick{
+    NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    NSDate *date = datePick.date;
+    self.text = [formatter stringFromDate:date];
+    }
+```
 * 如果多行的情况,设置选中后设置下一行数据再刷新即可
 
 * pickView的基本使用在项目中已经充分体现了 **LoginScreen-custom-ProvenceTexF** 这里就不再做此笔记了 **code 160115-01**
