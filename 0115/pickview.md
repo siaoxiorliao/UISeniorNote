@@ -106,5 +106,36 @@
     NSString *imageName = (NSString *)icon;
     _icon =  [UIImage imageNamed:imageName];
 }
+```
 
+# pickView级联
+* 点击文本框显示pickview则应该设置文本框不可编辑
+* 在这里初始化文本框的text,主要有三种方法
+* 项目也有充分的展示,示例**code 0115-04**
+
+```objectivec
+viewController.m
+//是否允许开始编辑
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    return YES;
+}
+//初始化textField.text
+- (void)textFieldDidBeginEditing:(id)textField{
+    //为了让编译时不报错;
+    //1. id
+    //2. CountryTextF
+    //3. 为UITextField写一个分类就行
+    //在运行时找真实类型的方法,所以这样就可以了
+    [textField initWithText];
+}
+
+textField.m
+- (void)initWithText{
+    [self pickerView:self.pick didSelectRow:0 inComponent:0];
+    [self pickerView:self.pick didSelectRow:0 inComponent:1];
+}
+或者
+- (void)initWithText{
+    [self dateChange:self.datePick];
+}
 ```
