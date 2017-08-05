@@ -38,8 +38,38 @@ self.deletedButton.hidden = !self.tableView.isEditing;
 self.reduceBtn.enabled = (wine.count > 0);
 ```
 <!--endsec-->
-
 <button class="section" target="section3" show="👌" hide="🙃"></button>
+
+5 .   日期转格式成字符串
+<!--sec data-title="😳对没对?😳" data-id="section4" data-show=false ces-->
+```objectivec
+NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
+formatter.dateFormat = @"yyyy-MM-dd";
+NSDate *date = datePick.date;
+self.text = [formatter stringFromDate:date];
+```
+<!--endsec-->
+<button class="section" target="section4" show="👌" hide="🙃"></button>
+
+6 .   遍历字典操作 KVC转模型原理
+<!--sec data-title="😳对没对?😳" data-id="section4" data-show=false ces-->
+```objectivec
++ (instancetype) itemWithDict: (NSDictionary *) dict{
+    FlagItem *item = [[FlagItem alloc]init];
+    //KVC转模型原理
+    [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        [item setValue:obj forKeyPath:key];
+    }];
+    return item;
+}
+    //KVC原理
+- (void)setIcon:(UIImage *)icon{
+    NSString *imageName = (NSString *)icon;
+    _icon = [UIImage imageNamed:imageName];
+}
+```
+<!--endsec-->
+<button class="section" target="section4" show="👌" hide="🙃"></button>
 
 
 
