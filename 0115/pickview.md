@@ -43,7 +43,10 @@
 }
 ```
 
-# KVC转模型原理,KVC原理
+# KVC转模型原理,KVC底层实现
+* KVC转模型最好转成最想要的
+* 利用KVC原理对KVC转模型时进行拦截,转化成最想要的.
+
 ```objectivec
 + (instancetype)itemWithDict:(NSDictionary *)dict{
     
@@ -68,7 +71,7 @@
     return item;
 }
 
-//了解到原理后
+//了解到原理后,在这里做拦截操作
 //重写即可将String *icon转化为UIImage icon;
 -(void)setIcon:(UIImage *)icon{
     NSString *imageName = (NSString *)icon;
