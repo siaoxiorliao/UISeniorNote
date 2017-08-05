@@ -1,4 +1,4 @@
-# 0115UIPickView/
+# 0115UIPickView/UITextField键盘弹出pickview/KVC转模型原理,KVC原理
 
 # UIPickView
 
@@ -67,4 +67,12 @@
 
     return item;
 }
+
+//了解到原理后
+//重写即可将String *icon转化为UIImage icon;
+-(void)setIcon:(UIImage *)icon{
+    NSString *imageName = (NSString *)icon;
+    _icon =  [UIImage imageNamed:imageName];
+}
+
 ```
