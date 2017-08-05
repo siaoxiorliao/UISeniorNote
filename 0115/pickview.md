@@ -56,7 +56,6 @@
         [item setValue:obj forKeyPath:key];
         NSLog(@"%@--%@",key,obj);
     }];
-    
     /**
     [item setValue:@"中国" forKeyPath:@"name"];
      setValue:forKeyPath实现原理
