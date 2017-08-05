@@ -84,6 +84,7 @@ UIView *carView = [[nib instantiateWithOwner:nil options:nil] firstObject];
 ```
 
 ### 控制器view懒加载过程
+* 什么时候用到控制器View的时候,才会调用loadView方法创建控制器的View
 ```objectivec
 -(UIView *)view{
     if (_view == nil) {
