@@ -45,6 +45,8 @@ UIWindowLevelAlert > UIWindowLevelStatusBar > UIWindowLevelNormal
     
 ```
 ## 通过Xib加载控制器的View
+* 控制器的init方法会调用initWithNibName:方法.
+
 > 之前学的是通过xib自定义View
 ```objectivec
 UINib *nib = [UINib nibWithNibName:@"CarView" bundle:nil];
