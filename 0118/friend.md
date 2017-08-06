@@ -43,6 +43,9 @@ viewWillDisappear ->viewDidDisappear
 [segue.SourceViewController.navigationController push...]
 ```
 
+### 正向传值
+* 为目标控制器添加要传的属性,在prepare方法里拿到目标控制器,设置目标控制器的属性即可.
+
 ## 二阶段 - 添加通讯录界面 反向传值
 
 * 笨拙的互相拥有属性 **code 160118 - 03**耦合性强
@@ -53,8 +56,7 @@ viewWillDisappear ->viewDidDisappear
 * **code 160118 - 04**
 * 运用代理设计模式可以有效解决控制器间的相互拥有的情况.
 
-### 正向传值
-* 为目标控制器添加要传的属性,在prepare方法里拿到目标控制器,设置目标控制器的属性即可.
+
 
 ## 三阶段 - 编辑界面
 * **重要** 在选择cell进入下个界面进行正向传值的时候,设置子控件的数据不会显示,是因为viewController的view是懒加载的,只有在用到的时候才加载,才不会显示.
