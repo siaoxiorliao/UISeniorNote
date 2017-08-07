@@ -65,4 +65,5 @@ viewWillDisappear ->viewDidDisappear
 ![](/0118/images/WX20170806-211819.png)
 ![](/0118/images/WX20170806-211521.png)
 所以在我们目标控制器里更改模型的值就等于更改了dataArray的数据,就不用再反向传值了.
+
 ![](/0118/images/WX20170806-211541.png)
