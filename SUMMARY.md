@@ -12,7 +12,8 @@
   * [导航控制器及管理原则/导航栏](0115/nav.md)
 * [0118/控制器跳转/view生命周期/通讯录](0118/friend.md)
 * [0119/沙盒/plist存储/归档解档/initWithCoder](0119/0119.md)
-  * [personinfo](0119/personinfo.md)
+  * [UINavigationItem](0119/personinfo.md)
+  * [tabbar](0119/tabbar.md)
 
 ## 其他
 
