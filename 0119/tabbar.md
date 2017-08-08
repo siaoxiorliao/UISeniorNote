@@ -26,7 +26,7 @@
 * 任何控制器都能通过model形式展示出来
 
 ## modal和push的区别
-* modal显示出来只是将原本的view清除,再将目标控制器的view显示到窗口上,并不是整个将控制器和push一样放上去,modal后UIWindow.keyWindow.rootViewController指向的还是源控制器(和push不同).
+* modal显示出来只是将原本的view清除,再将目标控制器的view显示到窗口上,并不是整个将控制器和push一样放上去,modal后UIWindow.keyWindow.rootViewController指向的还是源控制器(和push不同,push的rootViewController永远指向栈底控制器).
 * 这样目标控制器不是modal后被销毁吗?
  > 并不会,modal过后,源控制器也有会属性self.presentedViewController强引用着目标控制器,只有dismiss过后该属性就会被清空,目标控制器被销毁,目标控制器view也会相应被移除,而源控制器及其view始终没被销毁(显示回来也不需要重新加载viewDidLoad).
  
