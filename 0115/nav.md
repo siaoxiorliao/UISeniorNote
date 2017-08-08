@@ -9,7 +9,7 @@
 * push则是放入栈顶,如果调到指定的,则让指定的放在栈顶,在它上面的则被销毁
 * pop回到上一个控制器,本身的控制器被移除销毁
 * 只要push到UINavigationController,则就归它管理,就有了self.navigationController,self.navigationItem属性
-
+* push的rootViewController永远指向栈底控制器
 ### UINavigationItem
 * 存储栈顶控制器的导航栏内容
 
