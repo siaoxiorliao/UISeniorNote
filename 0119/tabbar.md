@@ -12,10 +12,13 @@
 
 ## UITabBar使用及属性
 * addChildViewController
-* UITabBar - > UITabBarButton,由对应子控制器的tabBarItem决定
+* UITabBar - > UITabBarButton,由对应子控制器vc的tabBarItem决定
   1. titile 后面设置的会覆盖前面设置的;
   2. image
   3. selectedImage
   4. badgeValue
   
 # 主流框架搭建
+* 主流框架 : 最好设置tabBar为窗口根控制器,在设置nav为tabBar子控制器,vc为nav的根控制器,tabBar里面可以有很多的nav,这就是最简单实用的框架.
+
+# modal模态
