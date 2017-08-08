@@ -30,6 +30,9 @@
 * 这样目标控制器不是modal后被销毁吗?
  > 并不会,modal过后,源控制器也有会属性self.presentedViewController强引用着目标控制器,只有dismiss过后该属性就会被清空,目标控制器被销毁,目标控制器view也会相应被移除,而源控制器及其view始终没被销毁(显示回来也不需要重新加载viewDidLoad).
  
+ > presentedViewController ->由本控制器present出来的控制器
+ presentingViewController ->present本控制器的控制器
+ 
 ## 使用
 * presentViewController弹出
 * dismissViewController消失

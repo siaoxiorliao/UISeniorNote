@@ -13,7 +13,7 @@
 * [0118/控制器跳转/view生命周期/通讯录](0118/friend.md)
 * [0119/沙盒/plist存储/归档解档/initWithCoder](0119/0119.md)
   * [UINavigationItem](0119/personinfo.md)
-  * [tabbar/tabBarItem/QQ框架搭建](0119/tabbar.md)
+  * [tabbar/tabBarItem/框架搭建/modal](0119/tabbar.md)
 * [0121](0121/0121.md)
 
 ## 其他
