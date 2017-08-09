@@ -16,7 +16,8 @@
   * [tabbar/tabBarItem/框架搭建/modal](0119/tabbar.md)
 * [0121/事件/触摸事件/事件传递和响应](0121/0121.md)
   * [hitTest原理/pointInside原理](0121/hittest.md)
-  * [gap](0121/gap.md)
+  * [手势识别器/抽屉效果及其封装](0121/gap.md)
+* [0122/Quartz2D](0122/0122.md)
 
 ## 其他
 
