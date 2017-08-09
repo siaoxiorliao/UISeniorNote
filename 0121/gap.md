@@ -50,3 +50,11 @@
 * 利用手势停止拖动,判断在屏幕左侧还是右侧获得最终的拖动结果,并固定展现出来
 * **code 160121-05**
 
+## 父子控制器
+* 当一个控制器的View添加到另一个控制器的View上的时候,那此时View所在的控制器也应该成为上一个控制器的子控制器.
+```objectivec
+    TableViewController *vc1 = [[TableViewController alloc] init];
+    vc1.view.frame = self.mainV.bounds;
+    [self.mainV addSubview:vc1.view];
+    [self addChildViewController:vc1];
+```
