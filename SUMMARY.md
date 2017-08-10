@@ -18,7 +18,7 @@
   * [hitTest原理/pointInside原理](0121/hittest.md)
   * [手势识别器/抽屉效果及其封装](0121/gap.md)
 * [0122/Quartz2D/drawRect/画线,矩形,圆,弧/重绘/饼图/随机颜色](0122/0122.md)
-  * [用UIKit画文字和图片](0122/kit.md)
+  * [用UIKit画文字,图片](0122/kit.md)
 
 ## 其他
 
