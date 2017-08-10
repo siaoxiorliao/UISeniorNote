@@ -96,3 +96,23 @@ void CGContextSaveGState(CGContextRef c)
     CGContextStrokePath(ctx);
 }
 ```
+
+# 矩阵操作
+* 利用矩阵操作，能让绘制到上下文中的所有路径一起发生变化[平移,旋转,缩放];
+
+```objectivec
+- (void)drawRect:(CGRect)rect {
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, 100, 50)];
+    //平移操作
+    CGContextTranslateCTM(ctx, 100, 100);
+    //旋转
+    CGContextRotateCTM(ctx, M_PI_4);
+    //缩放
+    CGContextScaleCTM(ctx, 1.5, 1.5);
+    CGContextAddPath(ctx, path.CGPath);
+    [[UIColor redColor] set];
+    CGContextFillPath(ctx);
+}
+```
+
