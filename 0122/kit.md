@@ -59,3 +59,40 @@
     //setNeedsDisplay会调用drawRect:,但是它并不是立马调用.只是设了一个标志.当下一次屏幕刷新的时候才去调用drawRect
 }
 ```
+
+# 图形上下文栈
+* 图形上下文可以保存状态,状态是以栈形式存储的
+* 可以恢复到指定的上下文状态(恢复到栈顶),再进行渲染,就能出现不同的样式了;
+
+```objectivec
+将当前的上下文copy一份,保存到栈顶(那个栈叫做”图形上下文栈”)
+void CGContextSaveGState(CGContextRef c)
+将栈顶的上下文出栈,替换掉当前的上下文void CGContextRestoreGState(CGContextRef c)
+```
+
+* 操作示例
+
+```objectivec
+- (void)drawRect:(CGRect)rect {
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(20, 150)];
+    [path addLineToPoint:CGPointMake(280, 150)];
+    CGContextAddPath(ctx, path.CGPath);
+    CGContextSaveGState(ctx);
+    
+    CGContextSetLineWidth(ctx, 10);
+    [[UIColor redColor] set];
+    CGContextSaveGState(ctx);
+    CGContextStrokePath(ctx);
+    
+    UIBezierPath *path2 = [UIBezierPath bezierPath];
+    [path2 moveToPoint:CGPointMake(150, 20)];
+    [path2 addLineToPoint:CGPointMake(150, 280)];
+    CGContextAddPath(ctx, path2.CGPath);
+    
+    CGContextRestoreGState(ctx);//红色
+     CGContextRestoreGState(ctx);//黑色
+    CGContextStrokePath(ctx);
+}
+```
