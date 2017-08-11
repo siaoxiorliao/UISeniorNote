@@ -175,6 +175,7 @@ UIGraphicsBeginImageContextWithOptions(self.imageV.bounds.size, NO, 0);
     UIImage *newImage =  UIGraphicsGetImageFromCurrentImageContext();
     //替换之前ImageView的图片
     self.imageV.image = newImage;
+    UIGraphicsEndImageContext();//不清除就内存暴涨
 }
 
 ```
