@@ -78,6 +78,7 @@
 
 # 屏幕截图
 * 对控制器的view截图然后生成一张图片
+* **将图片转成二进制流,放到桌面上**
 
 ```objectivec
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -94,6 +95,7 @@
     //4.关闭上下文
     UIGraphicsEndImageContext();
     //把生成的图片写入到桌面(文件方式进行传输:二进制流NSData)
+    //服务器交互也是转成二进制流?
     //把图片转成二进制流NSData
     //NSData *data = UIImageJPEGRepresentation(newImage, 1);
      NSData *data = UIImagePNGRepresentation(newImage);
