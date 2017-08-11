@@ -102,3 +102,39 @@
     [data writeToFile:@"/Users/siaoxiorliao/Desktop/newImage.png" atomically:YES];
 }
 ```
+
+# 手势裁剪
+
+```objectivec
+//单击拖拽手势
+- (IBAction)pan:(UIPanGestureRecognizer *)pan {
+    //判断手势的状态
+    CGPoint curP = [pan locationInView:self.imageV];
+    if(pan.state == UIGestureRecognizerStateBegan) {
+        self.startP = curP;
+    } else if(pan.state == UIGestureRecognizerStateChanged) {
+        CGFloat x = self.startP.x;
+        CGFloat y = self.startP.y;
+        CGFloat w = curP.x - self.startP.x;
+        CGFloat h = curP.y - self.startP.y;
+        CGRect rect =  CGRectMake(x, y, w, h);
+        //添加一个UIView
+        self.coverV.frame = rect;
+    } else if (pan.state == UIGestureRecognizerStateEnded) {
+        //把超过coverV的frame以外的内容裁剪掉
+        //生成了一张图片,把原来的图片给替换掉.
+UIGraphicsBeginImageContextWithOptions(self.imageV.bounds.size, NO, 0);
+        //把ImageV绘制到上下文之前,设置一个裁剪区域
+        UIBezierPath *clipPath = [UIBezierPath bezierPathWithRect:self.coverV.frame];
+        [clipPath addClip];
+        //把当前的ImageView渲染到上下文当中
+        CGContextRef ctx =  UIGraphicsGetCurrentContext();
+        [self.imageV.layer renderInContext:ctx];
+        //.从上下文当中生成 一张图片
+        UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+        //关闭上下文
+        UIGraphicsEndImageContext();
+        self.imageV.image = newImage;
+    }
+}
+```
