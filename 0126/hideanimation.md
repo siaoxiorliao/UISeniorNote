@@ -16,6 +16,8 @@
 ```
 
 # 时钟示例
+* layer的形变都是以anchorPoint进行的
+* 获取当前时间NSCalendar
 
 ```objectivec
 #import "ViewController.h"
