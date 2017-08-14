@@ -86,6 +86,8 @@ fillMode（要想fillMode有效，最好设置removedOnCompletion = NO）
 ## CATransition - 转场动画
 * 苹果为我们提供了很多的转场效果
 
+* 切换图片转场:
+
 ```objectivec
 static int _i = 1;
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
