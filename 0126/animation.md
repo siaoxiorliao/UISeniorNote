@@ -3,6 +3,8 @@
 * 动画执行过程都是在后台操作的,不会阻塞主线程.
 * 直接作用在CALayer上
 
+* 核心提供的效果有很多,具体看 **PPT 20 核心动画**
+
 ![](/0126/images/WX20170814-102228.png)
 
 ## 属性
@@ -121,5 +123,32 @@ static int _i = 1;
         self.imageV.image = [UIImage imageNamed:imageName];
     } completion:^(BOOL finished) {   
     }];
+}
+```
+
+## 动画组 CAAnimationGroup
+* 是CAAnimation的子类，可以保存一组动画对象，将CAAnimationGroup对象加入层后，组中所有动画对象可以同时并发运行
+
+```objectivec
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    CABasicAnimation *anim = [CABasicAnimation animation];
+    anim.keyPath = @"position.y";
+    anim.toValue = @400;
+//    anim.removedOnCompletion = NO;
+//    anim.fillMode = kCAFillModeForwards;
+//    [self.redView.layer addAnimation:anim forKey:nil];
+    
+    CABasicAnimation *anim2 = [CABasicAnimation animation];
+    anim2.keyPath = @"transform.scale";
+    anim2.toValue = @0.5;
+//    anim2.removedOnCompletion = NO;
+//    anim2.fillMode = kCAFillModeForwards;
+//    [self.redView.layer addAnimation:anim2 forKey:nil];
+    CAAnimationGroup *group = [CAAnimationGroup animation];
+    //会自动执行animations数组当中所有的动画对象
+    group.animations = @[anim,anim2];
+    group.removedOnCompletion = NO;
+    group.fillMode = kCAFillModeForwards;
+    [self.redView.layer addAnimation:group forKey:nil];
 }
 ```
