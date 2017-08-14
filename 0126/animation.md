@@ -1,3 +1,4 @@
+# 核心动画Core Animation/核心动画和UIView动画
 # 核心动画
 * Core Animation可以用在Mac OS X和iOS平台
 * 动画执行过程都是在后台操作的,不会阻塞主线程.
