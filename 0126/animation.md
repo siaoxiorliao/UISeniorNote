@@ -22,7 +22,7 @@ fillMode（要想fillMode有效，最好设置removedOnCompletion = NO）
     kCAFillModeBackwards 在动画开始前，只需要将动画加入了一个layer，layer便立即进入动画的初始状态并等待动画开始。
     kCAFillModeBoth 这个其实就是上面两个的合成.动画加入后开始之前，layer便处于动画初始状态，动画结束后layer保持动画最后的状态
 
-## CABasicAnimation
+## CABasicAnimation - 单值
 ```objectivec
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     //1.创建动画对象(设置layer的属性值.)
@@ -36,6 +36,7 @@ fillMode（要想fillMode有效，最好设置removedOnCompletion = NO）
     //3.添加动画
     [self.redView.layer addAnimation:anim forKey:nil];   
 }
+//心跳效果
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     //创建动画对象
     CABasicAnimation *anim = [CABasicAnimation animation];
@@ -51,5 +52,72 @@ fillMode（要想fillMode有效，最好设置removedOnCompletion = NO）
     //添加动画
     [self.imageV.layer addAnimation:anim forKey:nil];
 }
+```
+## CAKeyframeAnimation - 多值
+```objectivec
+//图标抖动
+- (void)icon {
+    //1.创建动画对象
+    CAKeyframeAnimation *anim = [CAKeyframeAnimation animation];
+    //2.设置属性值
+    anim.keyPath = @"transform.rotation";
+    anim.values = @[@(angle2Rad(-3)),@(angle2Rad(3)),@(angle2Rad(-3))];
+    //@[@(angle2Rad(-3)),@(angle2Rad(3))]
+    //3.设置动画执行次数
+    anim.repeatCount =  MAXFLOAT;
+    anim.duration = 0.2;
+    //anim.autoreverses = YES;
+    [self.imageV.layer addAnimation:anim forKey:nil];
+}
+//路径动画
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    CAKeyframeAnimation *anim = [CAKeyframeAnimation animation];
+    anim.duration = 2;
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(50, 50)];
+    [path addLineToPoint:CGPointMake(300, 50)];
+    [path addLineToPoint:CGPointMake(300, 400)];
+    anim.keyPath =  @"position";
+    //根据路径来开始动画
+    anim.path = path.CGPath;
+    [self.imageV.layer addAnimation:anim forKey:nil];
+}
+```
+## CATransition - 转场动画
+* 苹果为我们提供了很多的转场效果
 
+```objectivec
+static int _i = 1;
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    //转场代码与转场动画必须得在同一个方法当中.
+    //转场代码
+    _i++;
+    if (_i == 4) {
+        _i = 1;
+    }
+    NSString *imageName = [NSString stringWithFormat:@"%d",_i];
+    self.imageV.image = [UIImage imageNamed:imageName];
+    //添加转场动画
+    CATransition *anim = [CATransition animation];
+    anim.duration  = 1;
+    //设置转场的类型
+    anim.type = @"pageCurl";
+    //设置动画的起始位置
+    anim.startProgress = 0.3;
+    //设置动画的结束位置
+    anim.endProgress = 0.8;
+    [self.imageV.layer addAnimation:anim forKey:nil];
+    
+    //第二种
+    [UIView transitionWithView:self.imageV duration:0.5 options:UIViewAnimationOptionTransitionCurlUp animations:^{
+        //转场 代码
+        _i++;
+        if (_i == 4) {
+            _i = 1;
+        }
+        NSString *imageName = [NSString stringWithFormat:@"%d",_i];
+        self.imageV.image = [UIImage imageNamed:imageName];
+    } completion:^(BOOL finished) {   
+    }];
+}
 ```
