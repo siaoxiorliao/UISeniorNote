@@ -152,3 +152,24 @@ static int _i = 1;
     [self.redView.layer addAnimation:group forKey:nil];
 }
 ```
+
+## CAAnimationDelegate
+* 可以监听动画执行过程
+
+> 
+//动画开始时执行
+-(void)animationDidStart:(CAAnimation *)anim 
+//动画完成时执行
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+
+
+# 核心动画和UIView动画的区别
+   1.核心动画只作用在layer.
+   2.核心动画看到的都是假像,它并没有去修改UIView的真实位置.
+   > (当你点击使用核心动画后的view是触发不了touchBegan的,但是点击原来的位置就可以触发.用UIView则不用担心动画前和动画后)
+   
+# 什么时候使用核心动画?
+   1.当不需要与用户进行交互,使用核心动画
+   2.当要根据路径做动画时,使用核心动画
+   3.当做转场动画时, 使用核心动画 (核心动画转场类型比较多)
+
