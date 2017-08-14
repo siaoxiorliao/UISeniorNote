@@ -145,7 +145,7 @@ static int _i = 1;
 //    anim2.fillMode = kCAFillModeForwards;
 //    [self.redView.layer addAnimation:anim2 forKey:nil];
     CAAnimationGroup *group = [CAAnimationGroup animation];
-    //会自动执行animations数组当中所有的动画对象
+    //会自动执行animations数组当中所有的动画对象,统一操作;
     group.animations = @[anim,anim2];
     group.removedOnCompletion = NO;
     group.fillMode = kCAFillModeForwards;
