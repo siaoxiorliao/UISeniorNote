@@ -22,7 +22,8 @@
   * [位图上下文/图片水印/裁剪/屏幕截图/手势裁剪/图片擦除](0122/water.md)
 * [0123/抽取代码原则/示例 : 手势解锁/示例 : 画板](0123/0123.md)
 * [0126/CALayer/CATransform3D/position和anchorPoint](0126/0126.md)
-  * [隐式动画/示例: 隐式动画: 时钟](0126/hideanimation.md)
+  * [隐式动画/示例 : 时钟](0126/hideanimation.md)
+  * [核心动画Core Animation](0126/animation.md)
 
 ## 其他
 
