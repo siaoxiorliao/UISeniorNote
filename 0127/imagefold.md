@@ -93,7 +93,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     CAReplicatorLayer *repL = (CAReplicatorLayer *)self.view.layer;
     repL.instanceCount = 2;
     //绕着复制层的锚点进行旋转的
