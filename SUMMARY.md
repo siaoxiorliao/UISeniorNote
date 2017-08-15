@@ -25,7 +25,7 @@
   * [隐式动画/示例 : 时钟](0126/hideanimation.md)
   * [核心动画Core Animation/核心动画和UIView动画](0126/animation.md)
 * [0127/示例 : 转盘](0127/0127.md)
-  * [图片折叠效果](0127/imagefold.md)
+  * [示例 : 图片折叠效果](0127/imagefold.md)
 
 ## 其他
 
