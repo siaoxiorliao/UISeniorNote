@@ -47,3 +47,37 @@
     }
 ```
 
+# 复制层 CAReplicatorLayer
+```objectivec
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    CAReplicatorLayer *repL = [CAReplicatorLayer layer];
+    repL.backgroundColor = [UIColor greenColor].CGColor;
+    repL.frame = self.contentV.bounds;
+    [self.contentV.layer addSublayer:repL];
+    
+    //创建一个振动条
+    CALayer *layer = [CALayer layer];
+    layer.backgroundColor = [UIColor redColor].CGColor;
+    layer.bounds = CGRectMake(0, 0, 30, 100);
+    layer.anchorPoint = CGPointMake(0, 1);
+    layer.position = CGPointMake(0, self.contentV.bounds.size.height);
+    [repL addSublayer:layer];
+    
+    //添加动画
+    CABasicAnimation *anim = [CABasicAnimation animation];
+    anim.keyPath = @"transform.scale.y";
+    anim.toValue = @0;
+    anim.repeatCount = MAXFLOAT;
+    anim.duration = 1;
+    anim.autoreverses = YES;
+    [layer addAnimation:anim forKey:nil];
+
+    //复制的份数,包括自己;
+    repL.instanceCount = 5;
+    //对复制出的子层做形变操作;
+    repL.instanceTransform = CATransform3DMakeTranslation(45, 0, 0);
+    //动画延时执行时长
+    repL.instanceDelay = 1;
+}
+```
