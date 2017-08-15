@@ -81,3 +81,27 @@
     repL.instanceDelay = 1;
 }
 ```
+
+```objectivec
+//重写view
+@implementation VCView
+//view的layer类型是复制层
++ (Class)layerClass{
+    return [CAReplicatorLayer class];
+}
+@end
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    CAReplicatorLayer *repL = (CAReplicatorLayer *)self.view.layer;
+    repL.instanceCount = 2;
+    //绕着复制层的锚点进行旋转的
+    repL.instanceTransform = CATransform3DMakeRotation(M_PI, 1, 0, 0);
+    //阴影
+    repL.instanceRedOffset -= 0.1;
+    repL.instanceGreenOffset -= 0.1;
+    repL.instanceBlueOffset -= 0.1;
+    repL.instanceAlphaOffset -= 0.1;
+}
+```
