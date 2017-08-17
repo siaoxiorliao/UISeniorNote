@@ -55,13 +55,14 @@ UIView *carView = [[nib instantiateWithOwner:nil options:nil] firstObject];
 ```
 
 * initWithNibName
- >     //initWithNibName:如果指定了特定的名称的xib,会去加载指定的xib
-    //如果指定是nil
-    //1.判断有没有当前控制器相同名称的xib,如果有,自动加载跟它相同名称的xib(XMGViewController.xib)
-    //2.如果没有跟它相同名称的xib.自动加载跟它相同名称并且是去掉controller(XMGView.xib)
-    **init底层自动调用initWithNibName.**
-    //XMGViewController *vc = [[XMGViewController alloc] init];
-    //vc.view.backgroundColor = [UIColor redColor];
+
+>     //initWithNibName:如果指定了特定的名称的xib,会去加载指定的xib
+>    //如果指定是nil
+>    //1.判断有没有当前控制器相同名称的xib,如果有,自动加载跟它相同名称的xib(XMGViewController.xib)
+>    //2.如果没有跟它相同名称的xib.自动加载跟它相同名称并且是去掉controller(XMGView.xib)
+>    **init底层自动调用initWithNibName.**
+>    //XMGViewController *vc = [[XMGViewController alloc] init];
+>    //vc.view.backgroundColor = [UIColor redColor];
     
 ### 控制器loadView方法 - 自定义控制器view
 * 在控制器View第一次使用的时候调用
