@@ -47,7 +47,7 @@
 
 * pickView的基本使用在项目中已经充分体现了 **LoginScreen-custom-ProvenceTexF** 这里就不再做此笔记了 **code 160115-01**
 
-# UITextField
+# UITextFieldDelegate
 * 可以拦截用户输入或限制用户输入
 
 ```objectivec

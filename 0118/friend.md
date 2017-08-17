@@ -1,4 +1,4 @@
-# l
+# 0118/控制器跳转/view生命周期/通讯录
 # 控制器跳转
 
 ![](/0118/images/WX20170806-112400.png)
@@ -25,6 +25,7 @@ viewWillDisappear ->viewDidDisappear
 * 实现登录验证
 * 登录按钮是否可点击的监听
 * 实现记住密码和自动登录的开关UISwitch逻辑关系
+* 实现自动登录和记住密码的填充
 * 实现storyboard的控制器手动segue跳转(控制器间的segue)及简单的**正向传值**
 * 键盘弹出收回适应
 * HUD指示  
